@@ -1,0 +1,111 @@
+.header {
+    display: flex;
+    align-items: flex-start;
+    width: 100vw;
+    border-bottom: 1px solid $light-green;
+
+    @media (min-width: $lg-mobile) {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.logo {
+    flex-basis: auto;
+    display: flex;
+    align-items: center;
+    
+    @media (min-width: $lg-mobile) {
+        flex-basis: 100%;
+    }
+
+    &__img-wrapper {
+        width: 60px;
+        height: 60px;
+        padding: 15px;
+    }
+
+    &__brandname {
+        display: none;
+        @media (min-width: $lg-mobile) {
+            display: block;
+        }
+    }
+}
+
+.menu {
+    flex-grow: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    
+    @media (min-width: $lg-mobile) {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    &__icon {
+        width: 30px;
+        height: 30px;
+        padding: 15px;
+        color: $green;
+        cursor: pointer;
+
+        @media (min-width: $lg-mobile) {
+            display: none;
+        }
+    }
+
+    &__list {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        font-family: $link;
+
+        &.active {
+            display: flex;
+        }
+
+        @media (min-width: $lg-mobile) {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+    }
+
+    &__item {
+        width: 100%;
+        text-align: center;
+
+        @media (min-width: $lg-mobile) {
+            width: auto;
+        }
+    }
+
+    &__link {
+        display: block;
+        padding: 3px 0 3px;
+        margin-left: -60px;
+        font-size: 24px;
+        text-transform: uppercase;
+        font-weight: 200;
+        color: $green;
+        text-decoration: none;
+
+        &:hover {
+            background-color: #eee;
+        }
+        
+        @media (min-width: $lg-mobile) {
+            padding: 0 10px;
+            margin-left: 0;
+            line-height: 60px;
+        }
+
+        @media (min-width: 900px) {
+            padding: 0 20px;
+            line-height: 60px;
+        }
+    }
+}
