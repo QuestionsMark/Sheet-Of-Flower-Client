@@ -1,0 +1,36 @@
+.carousel {
+
+    &__container {
+        width: calc(100vw - 60px);
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    &__item {
+        &--screen {
+        }
+    }
+
+    &__img {
+        object-fit: cover;
+        &--screen {
+            width: 100vw;
+            height: 100vh;
+        }
+    }
+
+    &__title {
+        font-family: $title;
+        font-weight: 900;
+        margin: 20px 0 10px;
+
+        &--center {
+            text-align: center;
+        }
+    }
+
+    &__text {
+        font-family: $content;
+        font-weight: thin;
+    }
+}

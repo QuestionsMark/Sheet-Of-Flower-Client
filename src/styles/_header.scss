@@ -27,6 +27,9 @@
 
     &__brandname {
         display: none;
+        font-size: 26px;
+        font-weight: 900;
+
         @media (min-width: $lg-mobile) {
             display: block;
         }
@@ -92,6 +95,7 @@
         font-weight: 200;
         color: $green;
         text-decoration: none;
+        transition: $transition-time;
 
         &:hover {
             background-color: #eee;

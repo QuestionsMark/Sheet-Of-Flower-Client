@@ -1,0 +1,31 @@
+.footer {
+    padding: 20px;
+    background-color: $yellow;
+    font-family: $content;
+
+    &__info {
+        text-align: center;
+        font-weight: 200;
+        color: $orange;
+        font-size: 20px;
+    }
+
+    &__social-media {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 16px;
+    }
+
+    &__icon {
+        width: 30px;
+        height: 30px;
+        padding: 0 5px;
+        color: $orange;
+        transition: $transition-time;
+
+        &:hover {
+            color: darken($orange, 5%);
+        }
+    }
+}

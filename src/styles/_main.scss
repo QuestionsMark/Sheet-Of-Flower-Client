@@ -1,0 +1,57 @@
+.img {
+    display: block;
+    object-fit: cover;
+    width: 100%;
+}
+
+body {
+    font-family: 'Livvic', sans-serif !important;
+    overflow-x: hidden;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main {
+    flex-grow: 1;
+}
+
+.background-img {
+    position: fixed;
+    right: 0;
+    bottom: 140px;
+    transform: translate(50%, 50%);
+    width: 70vw;
+    opacity: 0.6;
+    z-index: -1;
+}
+
+.title {
+    font-weight: 900;
+    font-size: 26px;
+
+    &__wrapper {
+        width: calc(100vw - 60px);
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    &--md {
+        font-family: $title;
+        font-size: 32px;
+        text-transform: uppercase;
+    }
+    
+    &--sm {
+        font-weight: 200;
+        margin-bottom: 50px;
+        color: $light-green;
+    }
+}
+
+.section {
+    margin-bottom: 100px;
+}
