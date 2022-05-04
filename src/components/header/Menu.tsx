@@ -31,7 +31,7 @@ export const Menu = () => {
                     <NavLink className="menu__link" to="/pictures" onClick={hideMenu}>Obrazy</NavLink>
                 </li>
                 <li className="menu__item">
-                    <NavLink className="menu__link" to="/cards" onClick={hideMenu}>Kartki</NavLink>
+                    <NavLink className="menu__link" to="/collections" onClick={hideMenu}>Kartki</NavLink>
                 </li>
                 <li className="menu__item">
                     <NavLink className="menu__link" to="/products" onClick={hideMenu}>Produkty</NavLink>

@@ -2,6 +2,20 @@
     display: block;
     object-fit: cover;
     width: 100%;
+
+    &--galery {
+        aspect-ratio: 1/1;
+        opacity: 0;
+        transition: $transition-time ease-in-out;
+
+        &:nth-child(2) {
+            margin-top: -100%;
+        }
+
+        &.active {
+            opacity: 1;
+        }
+    }
 }
 
 body {
@@ -9,14 +23,10 @@ body {
     overflow-x: hidden;
 }
 
-.app {
+.main {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-}
-
-.main {
-    flex-grow: 1;
 }
 
 .background-img {
@@ -50,6 +60,12 @@ body {
         margin-bottom: 50px;
         color: $light-green;
     }
+}
+
+.text {
+    padding: 10px;
+    margin: 0 auto;
+    text-align: center;
 }
 
 .section {

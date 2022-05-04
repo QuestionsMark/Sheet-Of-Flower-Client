@@ -8,6 +8,7 @@ import { Titles } from "../../common/Titles";
 
 import ElaImg from '../../../images/5.png';
 import OlaImg from '../../../images/5.png';
+import { Loading } from "../../common/Loading";
 
 const aboutUsSlides: Slide[] = [
     {
@@ -34,10 +35,14 @@ export const Home = () => {
 
     const [pictures, setPictures] = useState<PictureAPI[] | null>(null);
     const getPictures = async () => {
+        const startTime = new Date().valueOf();
         const response = await fetchApiTool('pictures/intro');
         if (!response.status) return console.warn(response.message);
-        if (!componentRef.current) return;
-        setPictures(response.results as PictureAPI[]);
+        const endTime = new Date().valueOf();
+        setTimeout(() => {
+            if (!componentRef.current) return;
+            setPictures(response.results as PictureAPI[]);
+        }, endTime - startTime < 500 ? 500 - (endTime - startTime) : 0);
     };
 
     const getItems = () => {
@@ -50,13 +55,13 @@ export const Home = () => {
 
     return (
         <main className="main home" ref={componentRef}>
-            <section className="section intro">
+            {pictures ? <section className="section intro">
                 {pictures && <CarouselScreen slides={getItems()} />}
-            </section>
-            <section className="section about-us">
+            </section> : <Loading />}
+            {pictures && <section className="section about-us">
                 <Titles title="Poznajmy się" subtitle="Krótko o nas" />
                 <MyCarousel slides={aboutUsSlides} />
-            </section>
+            </section>}
         </main>
     );
 };

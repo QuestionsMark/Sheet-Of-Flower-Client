@@ -1,0 +1,16 @@
+.search {
+    display: block;
+    width: 100vw;
+    padding: 30px;
+    border: none;
+    border-bottom: 1px solid $light-green;
+    outline: none;
+    font-family: $link;
+    font-size: 18px;
+    font-weight: 200;
+    text-transform: uppercase;
+
+    &::placeholder {
+        color: rgba(28, 49, 3, 0.8);
+    }
+}

@@ -3,6 +3,7 @@ import { NewsAPI } from "../../../types";
 import { fetchApiTool } from "../../../utils/fetchHelper";
 import { Slide } from "../../common/CarouselItem";
 import { CarouselScreen } from "../../common/CarouselScreen";
+import { Loading } from "../../common/Loading";
 
 export const News = () => {
 
@@ -10,10 +11,14 @@ export const News = () => {
 
     const [news, setNews] = useState<NewsAPI[] | null>(null);
     const getNews = async () => {
+        const startTime = new Date().valueOf();
         const response = await fetchApiTool('news/last');
         if (!response.status) return console.warn(response.message);
-        if (!componentRef.current) return;
-        setNews(response.results as NewsAPI[]);
+        const endTime = new Date().valueOf();
+        setTimeout(() => {
+            if (!componentRef.current) return;
+            setNews(response.results as NewsAPI[]);
+        }, endTime - startTime < 500 ? 500 - (endTime - startTime) : 0);
     };
 
     const getItems = (): Slide[] => {
@@ -26,7 +31,7 @@ export const News = () => {
 
     return (
         <main className="main" ref={componentRef}>
-            {news && <CarouselScreen slides={getItems()} />}
+            {news ? <CarouselScreen slides={getItems()} /> : <Loading />}
         </main>
     );
 }

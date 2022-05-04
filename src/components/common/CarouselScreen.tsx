@@ -7,10 +7,6 @@ interface Props {
 
 export const CarouselScreen = ({ slides }: Props) => {
 
-    const handleChange = (index: number) => {
-        console.log('Zmiana');
-    };
-
     const slideList = () => {
         return slides.map(s => <CarouselItem key={s._id} slide={s} fullscreen />);
     };
@@ -25,7 +21,6 @@ export const CarouselScreen = ({ slides }: Props) => {
             showThumbs={false}
             transitionTime={600}
             swipeable={false}
-            onChange={(index) => handleChange(index)}
         >
             {slideList()}
         </Carousel>
