@@ -31,7 +31,7 @@ export const News = () => {
 
     return (
         <main className="main" ref={componentRef}>
-            {news ? <CarouselScreen slides={getItems()} /> : <Loading />}
+            {news ? <div className="show"><CarouselScreen slides={getItems()} /></div> : <Loading />}
         </main>
     );
 }

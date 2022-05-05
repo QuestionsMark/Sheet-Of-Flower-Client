@@ -70,4 +70,31 @@ body {
 
 .section {
     margin-bottom: 100px;
+    opacity: 0;
+    &:nth-of-type(2n - 1) {
+        transform: translateX(-100px);
+        animation: slide ease-in-out 0.5s forwards;
+    }
+    &:nth-of-type(2n) {
+        transform: translateX(100px);
+        animation: slide ease-in-out 0.5s forwards;
+    }
+}
+
+.show {
+    opacity: 0;
+    animation: show ease-in-out 0.5s forwards;
+}
+
+@keyframes slide {
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes show {
+    100% {
+        opacity: 1;
+    }
 }

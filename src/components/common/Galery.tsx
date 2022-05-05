@@ -18,7 +18,7 @@ export const Galery = ({ galery, model }: Props) => {
     const galeryList = galery.map(i => <SingleGaleryItem key={i._id} item={i} model={model} />);
 
     return (
-        <section className="galery">
+        <section className="galery show">
             {galery.length > 0 && <ul className="galery__list">
                 {galeryList}
             </ul>}

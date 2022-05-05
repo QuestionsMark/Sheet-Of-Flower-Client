@@ -17,7 +17,12 @@ export interface SearchResult {
     setPage: Dispatch<SetStateAction<Page>>;
 }
 
-export const useSearch = (collection: string, limit: number): SearchResult => {
+export const useSearch = (
+    collection: string,
+    limit: number,
+    hashtags: string[] | null = null,
+    productType: string | null = null
+): SearchResult => {
 
     const intervalId = useRef<NodeJS.Timeout | null>(null);
 
@@ -46,8 +51,10 @@ export const useSearch = (collection: string, limit: number): SearchResult => {
             url: `${HOST_ADDRESS}/${collection}`,
             params: {
                 search: searchPhrase,
-                page,
-                limit
+                page: page.current,
+                limit,
+                hashtags,
+                productType,
             },
             cancelToken: new axios.CancelToken(c => cancel = c),
         })
@@ -77,7 +84,7 @@ export const useSearch = (collection: string, limit: number): SearchResult => {
             cancel();
         }
 
-    }, [page.current, searchPhrase]);
+    }, [page.current, searchPhrase, hashtags, productType]);
 
     return { loading, data, amount, page, searchPhrase, setPage, handleSearchPhraseChange };
 };

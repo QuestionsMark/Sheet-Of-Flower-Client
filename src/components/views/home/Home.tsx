@@ -55,13 +55,13 @@ export const Home = () => {
 
     return (
         <main className="main home" ref={componentRef}>
-            {pictures ? <section className="section intro">
-                {pictures && <CarouselScreen slides={getItems()} />}
-            </section> : <Loading />}
-            {pictures && <section className="section about-us">
-                <Titles title="Poznajmy się" subtitle="Krótko o nas" />
-                <MyCarousel slides={aboutUsSlides} />
-            </section>}
+            {pictures ?
+                <div className="show">
+                    <CarouselScreen slides={getItems()} />
+                    <Titles title="Poznajmy się" subtitle="Krótko o nas" />
+                    <MyCarousel slides={aboutUsSlides} />
+                </div> : <Loading />
+            }
         </main>
     );
 };
