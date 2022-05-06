@@ -71,13 +71,12 @@ body {
 .section {
     margin-bottom: 100px;
     opacity: 0;
+    animation: slide cubic-bezier(0.280, 0.355, 0.290, 1.270) 0.5s forwards;
     &:nth-of-type(2n - 1) {
         transform: translateX(-100px);
-        animation: slide ease-in-out 0.5s forwards;
     }
     &:nth-of-type(2n) {
         transform: translateX(100px);
-        animation: slide ease-in-out 0.5s forwards;
     }
 }
 
