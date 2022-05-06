@@ -1,21 +1,20 @@
-import { ChangeEvent } from "react";
 import { HashtagAPI } from "../../types";
-import { Checkbox } from "./Checkbox";
+import { FilterItem } from "./FilterItem";
 
 interface Props {
     hashtags: HashtagAPI[];
     choosedHashtags: string[];
-    handleHashtagsChange: (e: ChangeEvent<HTMLInputElement>) => void;
+    handleChange: (value: string) => void;
 }
 
-export const HashtagFilter = ({ choosedHashtags, hashtags, handleHashtagsChange }: Props) => {
+export const HashtagFilter = ({ choosedHashtags, hashtags, handleChange }: Props) => {
 
     const checkIsChecked = (hashtag: string) => {
         return choosedHashtags.includes(hashtag);
     };
 
     const hashtagList = () => {
-        return hashtags.map(h => <Checkbox key={h._id} checked={checkIsChecked(h.name)} value={h.name} handleHashtagsChange={handleHashtagsChange} />);
+        return hashtags.map(h => <FilterItem key={h._id} checked={checkIsChecked(h.name)} hashtag value={h.name} handleChange={handleChange} />);
     };
 
     return (

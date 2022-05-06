@@ -8,43 +8,27 @@
     }
 
     &__item {
-        padding: 4px;
-        margin-right: 20px;
-        background-color: #eee;
-        opacity: 0;
         transform: translateX(100px);
+        padding: 8px 30px;
+        margin-right: 20px;
+        color: $green;
+        background-color: #eee;
+        font-family: $content;
+        font-weight: 200;
+        text-transform: uppercase;
+        opacity: 0;
+        cursor: pointer;
+        transition: $transition-time;
         animation: slide cubic-bezier(0.280, 0.355, 0.290, 1.270) 0.4s forwards;
         @for $i from 1 through 100 {
             &:nth-child(#{$i}n) {
                 animation-delay: #{$i * 0.1 - 0.1}s;
             }
         }
-    }
-    
-    &__label {
-        display: flex;
-        align-items: center;
-    }
 
-    &__inp {
-        display: none;
-    }
-
-    &__checkbox {
-        position: relative;
-        width: 16px;
-        height: 16px;
-        margin-right: 5px;
-        background-color: white;
-        cursor: pointer;
-    
-        &-icon {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
+        &.checked {
+            background-color: $light-green;
+            color: #eee;
         }
     }
-
 }

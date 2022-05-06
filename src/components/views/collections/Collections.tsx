@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CollectionAPI, HashtagAPI } from "../../../types";
 
 import { Loading } from "../../common/Loading";
@@ -31,9 +31,8 @@ export const Collections = () => {
         }, endTime - startTime < 500 ? 500 - (endTime - startTime) : 0);
     };
     const [choosedHashtags, setChoosedHashtags] = useState<string[]>([]);
-    const handleHashtagsChange = (e: ChangeEvent<HTMLInputElement>) => {
-        const value = e.target.value;
-        setChoosedHashtags(prev => prev.includes(value) ? prev.filter(h => h !== value) : [...prev, value]);
+    const handleHashtagsChange = (hashtag: string) => {
+        setChoosedHashtags(prev => prev.includes(hashtag) ? prev.filter(h => h !== hashtag) : [...prev, hashtag]);
     };
 
     const {
@@ -62,7 +61,7 @@ export const Collections = () => {
         <main ref={componentRef} className="main cards">
             {/* <Text></Text> */}
             <Search value={searchPhrase} handleSearch={handleSearchPhraseChange} />
-            {hashtags && <HashtagFilter choosedHashtags={choosedHashtags} hashtags={hashtags} handleHashtagsChange={handleHashtagsChange} />}
+            {hashtags && <HashtagFilter choosedHashtags={choosedHashtags} hashtags={hashtags} handleChange={handleHashtagsChange} />}
             {loading || !hashtags ? <Loading /> : <Galery galery={getGalery()} model="collections" />}
             {!loading && hashtags && <Pagination page={page} setPage={setPage} amount={amount} limit={12} />}
         </main>

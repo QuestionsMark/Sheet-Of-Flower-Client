@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { ProductAPI, ProductTypeAPI } from "../../../types";
 
 import { Loading } from "../../common/Loading";
@@ -7,7 +8,6 @@ import { Text } from "../../common/Text";
 import { Galery, GaleryItem } from "../../common/Galery";
 
 import { SearchResult, useSearch } from "../../../hooks/useSearch";
-import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { fetchApiTool } from "../../../utils/fetchHelper";
 import { ProductTypesFilter } from "../../common/ProductTypesFilter";
 
@@ -31,8 +31,8 @@ export const Products = () => {
         }, endTime - startTime < 500 ? 500 - (endTime - startTime) : 0);
     };
     const [choosedProductType, setChoosedProductType] = useState<string>('');
-    const handleProductTypesChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setChoosedProductType(prev => prev === e.target.value ? '' : e.target.value);
+    const handleProductTypesChange = (productType: string) => {
+        setChoosedProductType(prev => prev === productType ? '' : productType);
     };
 
     const {
@@ -62,7 +62,7 @@ export const Products = () => {
         <main ref={componentRef} className="main cards">
             {/* <Text></Text> */}
             <Search value={searchPhrase} handleSearch={handleSearchPhraseChange} />
-            {productTypes && <ProductTypesFilter choosedProductType={choosedProductType} productTypes={productTypes} handleProductTypesChange={handleProductTypesChange} />}
+            {productTypes && <ProductTypesFilter choosedProductType={choosedProductType} productTypes={productTypes} handleChange={handleProductTypesChange} />}
             {loading || !productTypes ? <Loading /> : <Galery galery={getGalery()} model="products" />}
             {!loading && <Pagination page={page} setPage={setPage} amount={amount} limit={12} />}
         </main>

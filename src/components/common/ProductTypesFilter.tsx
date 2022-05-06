@@ -1,21 +1,20 @@
-import { ChangeEvent } from "react";
 import { ProductTypeAPI } from "../../types";
-import { Checkbox } from "./Checkbox";
+import { FilterItem } from "./FilterItem";
 
 interface Props {
     productTypes: ProductTypeAPI[];
     choosedProductType: string;
-    handleProductTypesChange: (e: ChangeEvent<HTMLInputElement>) => void;
+    handleChange: (value: string) => void;
 }
 
-export const ProductTypesFilter = ({ choosedProductType, productTypes, handleProductTypesChange }: Props) => {
+export const ProductTypesFilter = ({ choosedProductType, productTypes, handleChange }: Props) => {
 
     const checkIsChecked = (choosed: string) => {
         return choosedProductType === choosed;
     };
 
     const productTypesList = () => {
-        return productTypes.map(h => <Checkbox key={h._id} checked={checkIsChecked(h.name)} value={h.name} handleHashtagsChange={handleProductTypesChange} />);
+        return productTypes.map(h => <FilterItem key={h._id} checked={checkIsChecked(h.name)} value={h.name} handleChange={handleChange} />);
     };
 
     return (
