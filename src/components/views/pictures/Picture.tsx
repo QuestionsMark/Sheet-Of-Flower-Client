@@ -6,12 +6,11 @@ import { getData } from "../../../utils/getData";
 import { makeSlidesFromImages } from "../../../utils/getSlides";
 import { Link } from "../../common/Link";
 import { Loading } from "../../common/Loading";
-
 import { MyCarousel } from "../../common/MyCarousel";
 import { SpecificationItem } from "../../common/SpecificationItem";
 import { Text } from "../../common/Text";
 
-export const Product = () => {
+export const Picture = () => {
 
     const componentRef = useRef<HTMLElement>(null);
     const { id } = useParams();
@@ -23,7 +22,7 @@ export const Product = () => {
     };
 
     useEffect(() => {
-        getData(`products/${id}`, setProduct, componentRef);
+        getData(`pictures/${id}`, setProduct, componentRef);
     }, []);
 
     return (
@@ -47,7 +46,7 @@ export const Product = () => {
                             </ul>
                         </div>}
                         <div className="product__aside-section">
-                            <Link to={product.shopLink}>kup teraz</Link>
+                            <Link to={product.shopLink}>zamów obraz</Link>
                         </div>
                     </aside>
                 </div> : <Loading />}

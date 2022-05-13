@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { PictureAPI } from "../../../types";
-import { fetchApiTool } from "../../../utils/fetchHelper";
 import { Slide } from "../../common/CarouselItem";
 import { CarouselScreen } from "../../common/CarouselScreen";
 import { MyCarousel } from "../../common/MyCarousel";
@@ -9,6 +8,7 @@ import { Titles } from "../../common/Titles";
 import ElaImg from '../../../images/5.png';
 import OlaImg from '../../../images/5.png';
 import { Loading } from "../../common/Loading";
+import { getData } from "../../../utils/getData";
 
 const aboutUsSlides: Slide[] = [
     {
@@ -34,23 +34,13 @@ export const Home = () => {
     const componentRef = useRef<HTMLElement>(null);
 
     const [pictures, setPictures] = useState<PictureAPI[] | null>(null);
-    const getPictures = async () => {
-        const startTime = new Date().valueOf();
-        const response = await fetchApiTool('pictures/intro');
-        if (!response.status) return console.warn(response.message);
-        const endTime = new Date().valueOf();
-        setTimeout(() => {
-            if (!componentRef.current) return;
-            setPictures(response.results as PictureAPI[]);
-        }, endTime - startTime < 500 ? 500 - (endTime - startTime) : 0);
-    };
 
     const getItems = () => {
         return (pictures as PictureAPI[]).map(({ _id, images }) => ({ _id, src: images[0].src, alt: images[0].alt }));
     }
 
     useEffect(() => {
-        getPictures();
+        getData('pictures/intro', setPictures, componentRef);
     }, []);
 
     return (

@@ -24,7 +24,7 @@ export const Pictures = () => {
         <main className="main pictures">
             {/* <Text></Text> */}
             <Search value={searchPhrase} handleSearch={handleSearchPhraseChange} />
-            {loading ? <Loading /> : <Galery galery={getGalery()} model="products" />}
+            {loading ? <Loading /> : <Galery galery={getGalery()} model="pictures" />}
             {!loading && <Pagination page={page} setPage={setPage} amount={amount} limit={12} />}
         </main>
     );
