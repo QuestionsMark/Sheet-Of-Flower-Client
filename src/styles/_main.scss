@@ -66,6 +66,19 @@ body {
     padding: 10px;
     margin: 0 auto;
     text-align: center;
+    font-family: $content;
+    font-weight: 200;
+}
+
+.link {
+    font-family: $link;
+    color: $green;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
 }
 
 .section {
@@ -77,6 +90,18 @@ body {
     }
     &:nth-of-type(2n) {
         transform: translateX(100px);
+    }
+}
+
+.specifications {
+    &__list {
+        list-style: disc;
+        padding-left: 20px;
+    }
+
+    &__item {
+        font-family: $content;
+        font-weight: 600;
     }
 }
 

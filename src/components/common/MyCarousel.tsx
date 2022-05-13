@@ -1,17 +1,28 @@
 import { useState } from 'react';
 import { Carousel } from 'react-responsive-carousel';
-import { CarouselItem, Slide } from './CarouselItem';
+import { HOST_ADDRESS } from '../../config';
+import { Slide } from './CarouselItem';
 
 interface Props {
+    className?: string;
+    showThumbs: boolean;
     slides: Slide[];
 }
 
-export const MyCarousel = ({ slides }: Props) => {
+export const MyCarousel = ({ className, slides, showThumbs }: Props) => {
 
     const [index, setIndex] = useState(0);
 
     const carouselItemList = () => {
-        return slides.map(s => <CarouselItem key={s._id} slide={s} staticImg={s.staticImg} />);
+        return slides.map(s => (
+            <div key={s._id} className="carousel__item">
+                <img src={s.staticImg ? s.src : `${HOST_ADDRESS}/images/${s.src}`} alt={s.alt} className="carousel__img" />
+                {s.title && s.description && <div className="legend">
+                    <h3 className="carousel__title">{s.title}</h3>
+                    <p className="carousel__text">{s.description}</p>
+                </div>}
+            </div>
+        ));
     };
 
     const showInfo = () => {
@@ -26,16 +37,17 @@ export const MyCarousel = ({ slides }: Props) => {
     };
 
     return (
-        <div className="carousel__container">
+        <div className={`carousel__container${className ? ' ' + className : ''}`}>
             <Carousel
                 autoPlay
                 infiniteLoop
                 interval={15000}
                 stopOnHover={false}
                 showStatus={false}
-                showThumbs={false}
+                showThumbs={showThumbs}
                 transitionTime={600}
                 onChange={(index) => setIndex(index)}
+                swipeable={false}
             >
                 {carouselItemList()}
             </Carousel>

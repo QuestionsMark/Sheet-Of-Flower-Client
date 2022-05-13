@@ -59,7 +59,7 @@ export const Home = () => {
                 <div className="show">
                     <CarouselScreen slides={getItems()} />
                     <Titles title="Poznajmy się" subtitle="Krótko o nas" />
-                    <MyCarousel slides={aboutUsSlides} />
+                    <MyCarousel slides={aboutUsSlides} showThumbs={false} />
                 </div> : <Loading />
             }
         </main>
