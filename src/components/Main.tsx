@@ -22,8 +22,9 @@ export const Main = () => {
             <Route path="/cards/:id" element={<Card />} />
             <Route path="/products" element={<Products />} />
             <Route path="/products/:id" element={<Product />} />
-            {/* <Route path="/privacy-policy" element={<PrivacyPolicy />} /> */}
             <Route path="/contact" element={<Contact />} />
+            {/* <Route path="*" element={<NotFound />} /> */}
+            {/* <Route path="/privacy-policy" element={<PrivacyPolicy />} /> */}
         </Routes>
     );
 }

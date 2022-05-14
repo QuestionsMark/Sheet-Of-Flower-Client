@@ -3,7 +3,6 @@ import { PictureAPI } from "../../../types";
 import { Loading } from "../../common/Loading";
 import { Search } from "../../common/Search";
 import { Pagination } from "../../common/Pagination";
-import { Text } from "../../common/Text";
 import { Galery, GaleryItem } from "../../common/Galery";
 
 import { SearchResult, useSearch } from "../../../hooks/useSearch";
@@ -22,7 +21,6 @@ export const Pictures = () => {
 
     return (
         <main className="main pictures">
-            {/* <Text></Text> */}
             <Search value={searchPhrase} handleSearch={handleSearchPhraseChange} />
             {loading ? <Loading /> : <Galery galery={getGalery()} model="pictures" />}
             {!loading && <Pagination page={page} setPage={setPage} amount={amount} limit={12} />}

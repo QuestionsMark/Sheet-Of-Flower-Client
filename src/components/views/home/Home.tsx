@@ -1,14 +1,14 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { PictureAPI } from "../../../types";
 import { Slide } from "../../common/CarouselItem";
 import { CarouselScreen } from "../../common/CarouselScreen";
 import { MyCarousel } from "../../common/MyCarousel";
 import { Titles } from "../../common/Titles";
+import { Loading } from "../../common/Loading";
+import { useData } from "../../../hooks/useData";
 
 import ElaImg from '../../../images/5.png';
 import OlaImg from '../../../images/5.png';
-import { Loading } from "../../common/Loading";
-import { getData } from "../../../utils/getData";
 
 const aboutUsSlides: Slide[] = [
     {
@@ -33,15 +33,11 @@ export const Home = () => {
 
     const componentRef = useRef<HTMLElement>(null);
 
-    const [pictures, setPictures] = useState<PictureAPI[] | null>(null);
+    const pictures = useData('pictures/intro', componentRef) as PictureAPI[];
 
     const getItems = () => {
         return (pictures as PictureAPI[]).map(({ _id, images }) => ({ _id, src: images[0].src, alt: images[0].alt }));
     }
-
-    useEffect(() => {
-        getData('pictures/intro', setPictures, componentRef);
-    }, []);
 
     return (
         <main className="main home" ref={componentRef}>

@@ -97,6 +97,10 @@
         text-decoration: none;
         transition: $transition-time;
 
+        &.active {
+            background-color: #eee;
+        }
+
         &:hover {
             background-color: #eee;
         }
