@@ -1,12 +1,13 @@
-import logo from '../../images/logo.png';
+import logoPC from '../../images/logo-pc.png';
+import logoMobile from '../../images/logo-mobile.png';
 
 export const Logo = () => {
     return (
         <div className="logo">
             <div className="logo__img-wrapper">
-                <img src={logo} alt="logo" className="img" />
+                <img src={logoPC} alt="logo" className="img logo--pc" />
+                <img src={logoMobile} alt="logo" className="img logo--mobile" />
             </div>
-            <h2 className="logo__brandname">OLEA</h2>
         </div>
     );
 };
