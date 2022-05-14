@@ -1,3 +1,26 @@
+*::-webkit-scrollbar {
+    width: 4px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: $dark-green;
+}
+
+*::-webkit-scrollbar-track {
+    background-color: $light-green;
+}
+
+body {
+    font-family: 'Livvic', sans-serif !important;
+    overflow-x: hidden;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 .img {
     display: block;
     object-fit: cover;
@@ -16,17 +39,6 @@
             opacity: 1;
         }
     }
-}
-
-body {
-    font-family: 'Livvic', sans-serif !important;
-    overflow-x: hidden;
-}
-
-.main {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
 }
 
 .background-img {
