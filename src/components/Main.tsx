@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import { Card } from "./views/collections/Card";
 import { Collection } from "./views/collections/Collection";
 import { Collections } from "./views/collections/Collections";
 import { Contact } from "./views/contact/Contact";
@@ -18,6 +19,7 @@ export const Main = () => {
             <Route path="/pictures/:id" element={<Picture />} />
             <Route path="/collections" element={<Collections />} />
             <Route path="/collections/:id" element={<Collection />} />
+            <Route path="/cards/:id" element={<Card />} />
             <Route path="/products" element={<Products />} />
             <Route path="/products/:id" element={<Product />} />
             {/* <Route path="/privacy-policy" element={<PrivacyPolicy />} /> */}

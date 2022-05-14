@@ -1,0 +1,16 @@
+.collection {
+    width: calc(100% - 60px);
+    max-width: 1200px;
+    padding-top: 30px;
+    margin: 0 auto;
+
+    &__title {
+        margin-bottom: 10px;
+        color: $dark-green;
+        font-family: $content;
+        font-weight: 900;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        text-align: center;
+    }
+}
