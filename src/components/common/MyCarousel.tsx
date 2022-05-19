@@ -5,11 +5,12 @@ import { Slide } from './CarouselItem';
 
 interface Props {
     className?: string;
+    outside?: boolean;
     showThumbs: boolean;
     slides: Slide[];
 }
 
-export const MyCarousel = ({ className, slides, showThumbs }: Props) => {
+export const MyCarousel = ({ className, outside, slides, showThumbs }: Props) => {
 
     const [index, setIndex] = useState(0);
 
@@ -17,7 +18,7 @@ export const MyCarousel = ({ className, slides, showThumbs }: Props) => {
         return slides.map(s => (
             <div key={s._id} className="carousel__item">
                 <img src={s.staticImg ? s.src : `${HOST_ADDRESS}/images/${s.src}`} alt={s.alt} className="carousel__img" />
-                {s.title && s.description && <div className="legend">
+                {!outside && s.title && s.description && <div className="legend">
                     <h3 className="carousel__title">{s.title}</h3>
                     <p className="carousel__text">{s.description}</p>
                 </div>}
@@ -51,7 +52,7 @@ export const MyCarousel = ({ className, slides, showThumbs }: Props) => {
             >
                 {carouselItemList()}
             </Carousel>
-            {slides[index].title && slides[index].description && showInfo()}
+            {outside && slides[index].title && slides[index].description && showInfo()}
         </div>
     );
 }

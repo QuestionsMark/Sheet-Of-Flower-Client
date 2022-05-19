@@ -5,6 +5,7 @@ import { Collections } from "./views/collections/Collections";
 import { Contact } from "./views/contact/Contact";
 import { Home } from "./views/home/Home";
 import { News } from "./views/news/News";
+import { NotFound } from "./views/NotFound";
 import { Picture } from "./views/pictures/Picture";
 import { Pictures } from "./views/pictures/Pictures";
 import { Product } from "./views/products/Product";
@@ -23,7 +24,7 @@ export const Main = () => {
             <Route path="/products" element={<Products />} />
             <Route path="/products/:id" element={<Product />} />
             <Route path="/contact" element={<Contact />} />
-            {/* <Route path="*" element={<NotFound />} /> */}
+            <Route path="*" element={<NotFound />} />
             {/* <Route path="/privacy-policy" element={<PrivacyPolicy />} /> */}
         </Routes>
     );
