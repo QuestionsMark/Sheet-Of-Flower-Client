@@ -1,4 +1,4 @@
-import { ChangeEvent, Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
 import axios, { Canceler, AxiosError } from 'axios';
 import { CardAPI, HashtagAPI, ProductAPI, ProductTypeAPI, CollectionAPI, NewsAPI, PictureAPI } from '../types';
 import { HOST_ADDRESS } from '../config';
@@ -13,7 +13,7 @@ export interface SearchResult {
     page: Page;
     amount: number;
     searchPhrase: string;
-    handleSearchPhraseChange: (e: ChangeEvent<HTMLInputElement>) => void;
+    handleSearchPhraseChange: (text: string) => void;
     setPage: Dispatch<SetStateAction<Page>>;
 }
 
@@ -24,14 +24,28 @@ export const useSearch = (
     productType: string | null = null
 ): SearchResult => {
 
-    const intervalId = useRef<NodeJS.Timeout | null>(null);
+    const debounceTimeoutId = useRef<NodeJS.Timeout | null>(null);
+    const delayTimeoutId = useRef<NodeJS.Timeout | null>(null);
 
     const [page, setPage] = useState<Page>(defaultPage);
     const [searchPhrase, setSearchPhrase] = useState('');
-    const handleSearchPhraseChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setPage(defaultPage);
-        setSearchPhrase(e.target.value);
+    const [search, setSearch] = useState('');
+
+    const handleSearchPhraseChange = (text: string) => {
+        setSearchPhrase(text);
     };
+
+    useEffect(() => {
+        if (debounceTimeoutId.current) {
+            clearTimeout(debounceTimeoutId.current);
+        }
+        debounceTimeoutId.current = setTimeout(() => {
+            setPage(defaultPage);
+            setSearch(searchPhrase);
+        }, 500);
+        return clearTimeout();
+    }, [searchPhrase]);
+
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState<Data>([]);
     const [amount, setAmount] = useState(0);
@@ -41,8 +55,8 @@ export const useSearch = (
     useEffect(() => {
         setData([]);
         const startTime = new Date().valueOf();
-        if (intervalId.current) {
-            clearTimeout(intervalId.current);
+        if (delayTimeoutId.current) {
+            clearTimeout(delayTimeoutId.current);
         }
         setLoading(true);
         let cancel: Canceler;
@@ -50,7 +64,7 @@ export const useSearch = (
             method: 'GET',
             url: `${HOST_ADDRESS}/${collection}`,
             params: {
-                search: searchPhrase,
+                search: search,
                 page: page.current,
                 limit,
                 hashtags,
@@ -60,7 +74,7 @@ export const useSearch = (
         })
             .then(res => {
                 const endTime = new Date().valueOf();
-                intervalId.current = setTimeout(() => {
+                delayTimeoutId.current = setTimeout(() => {
                     setLoading(false);
                     setData(prev => [...prev, ...res.data.results]);
                     setAmount(res.data.amount);
@@ -73,18 +87,18 @@ export const useSearch = (
             })
             .catch((e: AxiosError) => {
                 const endTime = new Date().valueOf();
-                intervalId.current = setTimeout(() => {
+                delayTimeoutId.current = setTimeout(() => {
                     if (axios.isCancel(e)) return;
                 }, endTime - startTime < 500 ? 500 - (endTime - startTime) : 0);
             });
         return () => {
-            if (intervalId.current) {
-                clearTimeout(intervalId.current);
+            if (delayTimeoutId.current) {
+                clearTimeout(delayTimeoutId.current);
             }
             cancel();
         }
 
-    }, [page.current, searchPhrase, hashtags, productType]);
+    }, [page.current, search, hashtags, productType]);
 
     return { loading, data, amount, page, searchPhrase, setPage, handleSearchPhraseChange };
 };
