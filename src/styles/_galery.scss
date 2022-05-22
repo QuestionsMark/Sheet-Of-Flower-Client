@@ -45,21 +45,15 @@
         font-family: $title;
         font-weight: 900;
         position: absolute;
-        left: 20px;
-        bottom: 20px;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        padding: 20px;
         color: #eee;
+        background-color: rgba(0,0,0,0.2);
 
         &--picture {
-            font-size: 32px;
+            font-size: 22px;
         }
-    }
-}
-
-@keyframes pulse {
-    50% {
-        background-color: rgba(230, 230, 230, 0.5);
-    }
-    100% {
-        background-color: rgba(180, 180, 180, 0.5);
     }
 }

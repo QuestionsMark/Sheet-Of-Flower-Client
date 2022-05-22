@@ -9,6 +9,7 @@ import { useData } from "../../../hooks/useData";
 
 import ElaImg from '../../../images/5.png';
 import OlaImg from '../../../images/5.png';
+import { IntroductionItem } from "../../common/IntroductionItem";
 
 const aboutUsSlides: Slide[] = [
     {
@@ -16,7 +17,7 @@ const aboutUsSlides: Slide[] = [
         alt: 'Ela',
         src: ElaImg,
         title: 'Ela',
-        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
         staticImg: true,
     },
     {
@@ -24,9 +25,9 @@ const aboutUsSlides: Slide[] = [
         alt: 'Ola',
         src: OlaImg,
         title: 'Ola',
-        description: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
+        description: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over.",
         staticImg: true,
-    }
+    },
 ]
 
 export const Home = () => {
@@ -39,14 +40,18 @@ export const Home = () => {
         return (pictures as PictureAPI[]).map(({ _id, images }) => ({ _id, src: images[0].src, alt: images[0].alt }));
     }
 
+    const AboutUsList = () => {
+        return aboutUsSlides.map(s => <IntroductionItem key={s._id} alt={s.alt} description={s.description as string} src={s.src} title={s.title as string} isStatic />);
+    };
+
     return (
         <main className="main home" ref={componentRef}>
             {pictures ?
                 <div className="show">
                     <CarouselScreen slides={getItems()} />
-                    <section className="home__section">
+                    <section className="home__section introduction">
                         <Titles title="Poznajmy się" subtitle="Krótko o nas" />
-                        <MyCarousel slides={aboutUsSlides} showThumbs={false} outside />
+                        {AboutUsList()}
                     </section>
                 </div> : <Loading />
             }

@@ -1,0 +1,32 @@
+.slide-animation {
+    opacity: 0;
+    &:nth-of-type(2n - 1) {
+        transform: translateX(-200px);
+    }
+    &:nth-of-type(2n) {
+        transform: translateX(200px);
+    }
+    animation: slide 0.4s cubic-bezier(0.280, 0.355, 0.290, 1.270) forwards;
+}
+
+
+@keyframes pulse {
+    50% {
+        background-color: rgba(230, 230, 230, 0.5);
+    }
+    100% {
+        background-color: rgba(180, 180, 180, 0.5);
+    }
+}
+@keyframes slide {
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes show {
+    100% {
+        opacity: 1;
+    }
+}

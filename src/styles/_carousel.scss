@@ -6,6 +6,16 @@
         margin: 0 auto;
     }
 
+    &__item {
+        min-width: 100%;
+        min-height: 60px;
+        background-color: #fff;
+        transition: $transition-time;
+        background-color: rgba(180, 180, 180, 0.5);
+        animation: pulse infinite linear 2s;
+        // aspect-ratio: 1/1;
+    }
+
     &__img {
         object-fit: cover;
         cursor: pointer;
@@ -41,5 +51,22 @@
     }
     .thumb {
         cursor: pointer;
+    }
+}
+
+#legend {
+    .legend {
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        border-radius: 0;
+        margin-left: 0;
+        font-weight: 200;
+        
+        @media (min-width: $sm-pc) {
+            padding: 40px;
+            font-size: 16px;
+            
+        }
     }
 }

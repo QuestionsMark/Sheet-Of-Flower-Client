@@ -11,7 +11,8 @@
 }
 
 body {
-    font-family: 'Livvic', sans-serif !important;
+    // font-family: 'Livvic', sans-serif !important;
+    font-family: $content;
     overflow-x: hidden;
 }
 
@@ -56,8 +57,8 @@ body {
     font-size: 26px;
 
     &__wrapper {
-        width: calc(100vw - 60px);
-        max-width: 500px;
+        // width: calc(100vw - 60px);
+        // max-width: 500px;
         margin: 0 auto;
     }
 
@@ -120,17 +121,4 @@ body {
 .show {
     opacity: 0;
     animation: show ease-in-out 0.5s forwards;
-}
-
-@keyframes slide {
-    100% {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-@keyframes show {
-    100% {
-        opacity: 1;
-    }
 }

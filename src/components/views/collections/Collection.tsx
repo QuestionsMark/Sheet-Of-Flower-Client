@@ -27,12 +27,12 @@ export const Collection = () => {
     return (
         <main ref={componentRef} className="main collection">
             {collection ?
-                <>
+                <div className="collection__wrapper slide-animation">
                     <h1 className="collection__title">{collection.name}</h1>
                     <Text className="collection__description">{collection.description}</Text>
                     <Galery galery={getGalery()} model="cards" />
                     <Pagination amount={amount} limit={12} page={page} setPage={setPage} />
-                </> : <Loading />}
+                </div> : <Loading />}
         </main>
     );
 };

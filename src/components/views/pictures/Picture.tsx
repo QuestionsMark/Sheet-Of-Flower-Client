@@ -18,7 +18,7 @@ export const Picture = () => {
     return (
         <main ref={componentRef} className="main product">
             {picture ?
-                <div className="product__wrapper">
+                <div className="product__wrapper slide-animation">
                     <section className="product__content">
                         <SRLWrapper>
                             <MyCarousel slides={makeSlidesFromImages(picture.images)} showThumbs className="product__carousel" />

@@ -93,31 +93,47 @@
 
     &__link {
         display: block;
-        padding: 3px 0 3px;
+        
+        // padding: 3px 0 3px;
+        border-bottom: 1px solid transparent;
         margin-left: -86px;
-        font-size: 24px;
+        font-size: 20px;
         text-transform: uppercase;
         font-weight: 200;
         color: $green;
         text-decoration: none;
-        transition: $transition-time;
+        // transition: $transition-time;
 
         &.active {
-            background-color: #eee;
+            // background-color: #eee;
+            // border: 1px solid black;
+            font-weight: 400;
+            
+            @media (min-width: $lg-mobile) {
+                border-bottom: 1px solid black;
+                
+            }
         }
-
+        
         &:hover {
-            background-color: #eee;
+            // background-color: #eee;
+            // border: 1px solid black;
+            @media (min-width: $lg-mobile) {
+                border-bottom: 1px solid black;
+                
+            }
+            border-bottom: 1px solid black;
+            font-weight: 400;
         }
         
         @media (min-width: $lg-mobile) {
-            padding: 0 10px;
+            width: 120px;
             margin-left: 0;
             line-height: 60px;
         }
 
-        @media (min-width: 900px) {
-            padding: 0 20px;
+        @media (min-width: $sm-pc) {
+            width: 150px;
             line-height: 60px;
         }
     }

@@ -4,6 +4,12 @@
     padding-top: 30px;
     margin: 0 auto;
 
+    &__wrapper {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
     &__title {
         margin-bottom: 10px;
         color: $dark-green;
