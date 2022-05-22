@@ -1,0 +1,26 @@
+.privacy-policy {
+    width: calc(100% - 60px);
+    max-width: 1200px;
+    padding-bottom: 30px;
+    margin: 0 auto;
+
+    & > h2, & > h1 {
+        margin: 50px 0 10px;
+        font-family: $title;
+    }
+
+    & > p {
+        font-family: $content;
+        font-weight: 200;
+    }
+
+    &__list {
+        list-style-type: disc;
+    }
+
+    &__item {
+        margin-left: 30px;
+        font-family: $content;
+        font-weight: 200;
+    }
+}

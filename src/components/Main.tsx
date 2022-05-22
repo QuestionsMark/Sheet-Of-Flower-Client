@@ -8,6 +8,7 @@ import { News } from "./views/news/News";
 import { NotFound } from "./views/NotFound";
 import { Picture } from "./views/pictures/Picture";
 import { Pictures } from "./views/pictures/Pictures";
+import { PrivacyPolicy } from "./views/PrivacyPolicy";
 import { Product } from "./views/products/Product";
 import { Products } from "./views/products/Products";
 
@@ -24,8 +25,8 @@ export const Main = () => {
             <Route path="/products" element={<Products />} />
             <Route path="/products/:id" element={<Product />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="*" element={<NotFound />} />
-            {/* <Route path="/privacy-policy" element={<PrivacyPolicy />} /> */}
         </Routes>
     );
 }
