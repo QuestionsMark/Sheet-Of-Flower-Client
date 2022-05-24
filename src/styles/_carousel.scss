@@ -8,17 +8,21 @@
 
     &__item {
         min-width: 100%;
-        min-height: 60px;
         background-color: #fff;
         transition: $transition-time;
-        background-color: rgba(180, 180, 180, 0.5);
-        animation: pulse infinite linear 2s;
         // aspect-ratio: 1/1;
+
+        .carousel__img {
+            min-height: 60px;
+        }
     }
 
     &__img {
         object-fit: cover;
         cursor: pointer;
+        background-color: rgba(180, 180, 180, 0.5);
+        animation: pulse infinite linear 2s;
+        // aspect-ratio: 1/1;
         &--screen {
             width: 100vw;
             height: 100vh;
