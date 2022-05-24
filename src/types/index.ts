@@ -7,3 +7,4 @@ export * from "./collections";
 export * from "./img";
 export * from "./specification";
 export * from "./response";
+export * from "./covers";
