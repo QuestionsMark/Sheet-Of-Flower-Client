@@ -1,8 +1,6 @@
-import { Link } from "react-router-dom";
-
 export const PrivacyPolicy = () => {
     return (
-        <main className="main privacy-policy">
+        <main className="main privacy-policy slide-animation">
             <h1>Privacy Policy for Oela Graphic Design</h1>
 
             <p>At oela.pl, accessible from https://oela.pl, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by oela.pl and how we use it.</p>

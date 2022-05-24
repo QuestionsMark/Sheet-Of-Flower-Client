@@ -23,4 +23,57 @@
         font-family: $content;
         font-weight: 200;
     }
+
+
+
+    &-popup {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        padding: 20px;
+        background-color: lighten($light-green, 10%);
+        text-align: center;
+
+        @media (min-width: $lg-mobile) {
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        &__title {
+            font-family: $title;
+            margin-bottom: 10px;
+        }
+
+        &__text {
+            font-family: $content;
+            font-weight: 200;
+        }
+
+        &__btn {
+            padding: 8px 16px;
+            border: none;
+            margin: 20px 0 0 10px;
+            outline: none;
+            color: $green;
+            background-color: #ddd;
+            font-family: $content;
+            font-weight: 200;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: $transition-time;
+
+            &:hover {
+                color: white;
+                background-color: $light-green;
+            }
+
+            @media (min-width: $lg-mobile) {
+                margin: 0 0 0 10px;
+            }
+        }
+    }
 }
