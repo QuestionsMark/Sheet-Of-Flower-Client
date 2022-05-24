@@ -1,8 +1,7 @@
 import { useRef } from "react";
-import { PictureAPI } from "../../../types";
+import { CoverAPI, PictureAPI } from "../../../types";
 import { Slide } from "../../common/CarouselItem";
 import { CarouselScreen } from "../../common/CarouselScreen";
-import { MyCarousel } from "../../common/MyCarousel";
 import { Titles } from "../../common/Titles";
 import { Loading } from "../../common/Loading";
 import { useData } from "../../../hooks/useData";
@@ -34,10 +33,10 @@ export const Home = () => {
 
     const componentRef = useRef<HTMLElement>(null);
 
-    const pictures = useData('pictures/intro', componentRef) as PictureAPI[];
+    const covers = useData('covers', componentRef) as CoverAPI[];
 
     const getItems = () => {
-        return (pictures as PictureAPI[]).map(({ _id, images }) => ({ _id, src: images[0].src, alt: images[0].alt }));
+        return (covers as PictureAPI[]).map(({ _id, images }) => ({ _id, src: images[0].src, alt: images[0].alt }));
     }
 
     const AboutUsList = () => {
@@ -46,7 +45,7 @@ export const Home = () => {
 
     return (
         <main className="main home" ref={componentRef}>
-            {pictures ?
+            {covers ?
                 <div className="show">
                     <CarouselScreen slides={getItems()} />
                     <section className="home__section introduction">
